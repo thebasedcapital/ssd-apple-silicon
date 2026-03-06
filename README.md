@@ -4,7 +4,13 @@
 
 ## The Question
 
-[Speculative Speculative Decoding](https://arxiv.org/abs/2603.03251) (Kumar, Dao, May 2026) achieves 2x over standard spec decode on H100 GPUs by running draft and target models on separate hardware in parallel. Can we do the same on Apple Silicon using the Neural Engine (ANE) + GPU?
+This project is inspired by **[Speculative Speculative Decoding (SSD)](https://arxiv.org/abs/2603.03251)** by **Tanishq Kumar, Tri Dao, and Avner May** (2026). Their work achieves 2x over standard spec decode on H100 GPUs by running draft and target models on separate hardware in parallel.
+
+- **Paper:** [arxiv.org/abs/2603.03251](https://arxiv.org/abs/2603.03251)
+- **Code:** [github.com/tanishqkumar/ssd](https://github.com/tanishqkumar/ssd)
+- **Their algorithm (Saguaro)** uses geometric fan-out for speculation caching, a novel sampling scheme to boost cache hit rates, and adaptive fallback for cache misses.
+
+**Our question:** Can we bring SSD to Apple Silicon using the Neural Engine (ANE) + GPU?
 
 ## Hardware
 
@@ -176,6 +182,17 @@ res = mb.const(val=dtype(val), name=node.name)
 - [Meta LayerSkip](https://github.com/facebookresearch/LayerSkip)
 - [SqueezeBits Yetter](https://blog.squeezebits.com/disaggregated-inference-on-apple-silicon-npu-prefill-and-gpu-decode-67176)
 - [vllm-mlx](https://github.com/waybarrios/vllm-mlx)
+
+## Acknowledgments
+
+- **Tanishq Kumar, Tri Dao, Avner May** for [Speculative Speculative Decoding](https://arxiv.org/abs/2603.03251) and the [Saguaro implementation](https://github.com/tanishqkumar/ssd) — the paper that started this investigation
+- **Apple MLX team** for [MLX](https://github.com/ml-explore/mlx) and [mlx-lm](https://github.com/ml-explore/mlx-lm)
+- **finnvoorhees** for [pre-compiled CoreML Qwen models](https://huggingface.co/finnvoorhees) on HuggingFace
+- **SafeAI Lab** for [EAGLE-3](https://github.com/SafeAILab/EAGLE) speculative decoding
+- **AngelSlim** for [Qwen3 EAGLE-3 heads](https://huggingface.co/AngelSlim/Qwen3-1.7B_eagle3)
+- **smpanaro** for [coreml-llm-cli](https://github.com/smpanaro/coreml-llm-cli) and ANE LLM research
+- **SqueezeBits** for [Yetter disaggregated inference](https://blog.squeezebits.com/disaggregated-inference-on-apple-silicon-npu-prefill-and-gpu-decode-67176) research
+- **Meta** for [LayerSkip](https://github.com/facebookresearch/LayerSkip) self-speculative decoding
 
 ## License
 
