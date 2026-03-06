@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+ssd-rust/target/
+*.mlpackage
+*.mlmodelc
+*.gguf
+*.bin
+# Compiled Swift binaries (rebuild from source)
+ane_bench
+ane_bench_matched
+ane_draft_server
+ssd_3b
+ssd_ane_gpu_test
+ssd_e2e
+ssd_final
+ssd_overlap_test
+ssd_parallel
+ssd_stochastic
+bench_disagg
+bench_e2e_disagg
+bench_3b_prefill
+ssd-rust/target
